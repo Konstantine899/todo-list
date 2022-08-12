@@ -5,18 +5,21 @@ import SearchPanel from "./SearchPanel/SearchPanel";
 import ItemStatusFilter from "./ItemStatusFilter/ItemStatusFilter";
 import TodoList from "./TodoList/TodoList";
 import ItemAddForm from "./ItemAddForm/ItemAddForm";
+import { TodoProvider } from "../context/TodoProvider/TodoProvider";
 
 const Todo = () => {
   return (
-    <div className="todoApp">
-      <AppHeader />
-      <div className="top-panel d-flex">
-        <SearchPanel />
-        <ItemStatusFilter />
+    <TodoProvider>
+      <div className="todoApp">
+        <AppHeader />
+        <div className="top-panel d-flex">
+          <SearchPanel />
+          <ItemStatusFilter />
+        </div>
+        <TodoList />
+        <ItemAddForm />
       </div>
-      <TodoList />
-      <ItemAddForm />
-    </div>
+    </TodoProvider>
   );
 };
 

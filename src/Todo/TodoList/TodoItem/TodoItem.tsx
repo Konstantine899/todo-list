@@ -1,14 +1,17 @@
 import React from "react";
-import Item from "./Item/Item";
 import ButtonToggleDone from "./Buttons/ButtonToggleDone";
 import ButtonDelete from "./Buttons/ButtonDelete";
+import { ITodoItemProps } from "./interface/ITodoItemProps";
+import Item from "./Item/Item";
 
-const TodoItem = () => {
+const TodoItem = ({ todo }: ITodoItemProps) => {
   return (
-    <span>
-      <Item />
-      <ButtonToggleDone />
-      <ButtonDelete />
+    <span className="list-group-item">
+      <Item todo={todo} />
+      <div>
+        <ButtonToggleDone />
+        <ButtonDelete />
+      </div>
     </span>
   );
 };
