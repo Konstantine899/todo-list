@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React, { FC, useContext } from "react";
 import "./TodoList.css";
 import TodoItem from "./TodoItem/TodoItem";
 import { TodoContext } from "../../context/TodoContext/TodoContext";
 
-const TodoList = () => {
+const TodoList: FC = () => {
   const {
     todoState: { todos },
   } = useContext(TodoContext);

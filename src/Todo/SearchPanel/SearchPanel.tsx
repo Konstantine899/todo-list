@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import "./SearchPanel.css";
 
-const SearchPanel = () => {
+const SearchPanel: FC = () => {
   return (
     <input
       type="text"

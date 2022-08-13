@@ -6,6 +6,8 @@ export const todoReducer = (
   action: TAction
 ): IInitialState => {
   switch (action.type) {
+    case "addTodo":
+      return { ...state, todos: [...state.todos, action.payload] };
     default:
       return state;
   }

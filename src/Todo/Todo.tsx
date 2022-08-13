@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import "./Todo.css";
 import AppHeader from "./AppHeader/AppHeader";
 import SearchPanel from "./SearchPanel/SearchPanel";
@@ -7,7 +7,7 @@ import TodoList from "./TodoList/TodoList";
 import ItemAddForm from "./ItemAddForm/ItemAddForm";
 import { TodoProvider } from "../context/TodoProvider/TodoProvider";
 
-const Todo = () => {
+const Todo: FC = () => {
   return (
     <TodoProvider>
       <div className="todoApp">

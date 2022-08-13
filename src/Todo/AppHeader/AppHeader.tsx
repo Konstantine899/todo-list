@@ -1,7 +1,7 @@
-import React from "react";
+import React, { FC } from "react";
 import "./AppHeader.css";
 
-const AppHeader = () => {
+const AppHeader: FC = () => {
   return (
     <div className="app-header">
       <h1>Список дел</h1>

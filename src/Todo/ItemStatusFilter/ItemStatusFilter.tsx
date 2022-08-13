@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import "./ItemStatusFilter.css";
 import Button from "./Button/Button";
 
-const ItemStatusFilter = () => {
+const ItemStatusFilter: FC = () => {
   const buttons = [
     { name: "all", label: "Все" },
     { name: "active", label: "Активные" },
