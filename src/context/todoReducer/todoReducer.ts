@@ -8,6 +8,14 @@ export const todoReducer = (
   switch (action.type) {
     case "addTodo":
       return { ...state, todos: [...state.todos, action.payload] };
+    case "deleteTodo":
+      return {
+        ...state,
+        todos: [
+          ...state.todos.slice(0, action.payload.id),
+          ...state.todos.slice(action.payload.id + 1),
+        ],
+      };
     default:
       return state;
   }

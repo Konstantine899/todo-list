@@ -12,8 +12,12 @@ export const TodoProvider = ({ children }: IProps) => {
     dispatch({ type: "addTodo", payload: { ...item } as ITodo });
   };
 
+  const deleteTodo = (id: number) => {
+    dispatch({ type: "deleteTodo", payload: { id } });
+  };
+
   return (
-    <TodoContext.Provider value={{ todoState, addTodo }}>
+    <TodoContext.Provider value={{ todoState, addTodo, deleteTodo }}>
       {children}
     </TodoContext.Provider>
   );
