@@ -22,6 +22,7 @@ const ItemAddForm: FC = () => {
 
   const handleFormSubmit = (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
+    if (labelState === "") return null;
     addTodo(createTodoItem);
     setLabelState("");
   };
