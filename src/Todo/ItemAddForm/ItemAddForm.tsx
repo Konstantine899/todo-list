@@ -1,34 +1,35 @@
-import React, { FC, FormEvent, useContext, useState } from "react";
-import { TodoContext } from "../../context/TodoContext/TodoContext";
+import React, { FC, FormEvent, useState } from "react";
 import { ITodo } from "../../context/initialState/interfaces/ITodo";
-import "./ItemAddForm.css";
 import InputForAddItem from "./InputForAddItem/InputForAddItem";
 import ButtonSubmit from "./ButtonSubmit/ButtonSubmit";
+import { useTodos } from "../../hooks/useTodos";
+import "./ItemAddForm.css";
 
 const ItemAddForm: FC = () => {
-  const { addTodo } = useContext(TodoContext);
-  const [label, setLabel] = useState<string>("");
+  const { addTodo } = useTodos();
+  const [labelState, setLabelState] = useState<string>("");
 
-  const item: ITodo = {
+  const createTodoItem: ITodo = {
     id: Math.random(),
-    label: label.toLowerCase(),
+    label: labelState.toLowerCase(),
     important: false,
     done: false,
   };
 
   const changeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setLabel(() => event.target.value);
+    setLabelState(() => event.target.value);
   };
 
-  const Submit = (event: FormEvent<HTMLButtonElement>) => {
+  const handleFormSubmit = (event: FormEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    addTodo(item);
+    addTodo(createTodoItem);
+    setLabelState("");
   };
 
   return (
     <form className="item-add-form d-flex">
-      <InputForAddItem changeInput={changeInput} label={label} />
-      <ButtonSubmit Submit={Submit} />
+      <InputForAddItem changeInput={changeInput} label={labelState} />
+      <ButtonSubmit Submit={handleFormSubmit} />
     </form>
   );
 };

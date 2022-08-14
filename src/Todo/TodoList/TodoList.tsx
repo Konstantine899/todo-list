@@ -1,12 +1,10 @@
-import React, { FC, useContext } from "react";
+import React, { FC } from "react";
 import "./TodoList.css";
 import TodoItem from "./TodoItem/TodoItem";
-import { TodoContext } from "../../context/TodoContext/TodoContext";
+import { useTodos } from "../../hooks/useTodos";
 
 const TodoList: FC = () => {
-  const {
-    todoState: { todos },
-  } = useContext(TodoContext);
+  const { todos } = useTodos();
 
   return (
     <ul>
