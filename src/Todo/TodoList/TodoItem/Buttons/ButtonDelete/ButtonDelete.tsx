@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { IButtonDeleteProps } from "./interfaces/IButtonDeleteProps";
-import { useTodos } from "../../../../hooks/useTodos";
+import { useTodos } from "../../../../../hooks/useTodos";
 
 const ButtonDelete: FC<IButtonDeleteProps> = ({ todo }) => {
   const { deleteTodo, todos } = useTodos();

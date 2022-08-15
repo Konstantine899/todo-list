@@ -17,18 +17,9 @@ export const todoReducer = (
         ],
       };
     case "doneTodo":
-      const indexElement = state.todos.findIndex(
-        (element) => element.id === action.payload.id
-      );
-      const oldElement = state.todos[indexElement]; //Для лучшей читабельности достаю старый элемент
-      return {
-        ...state,
-        todos: [
-          ...state.todos.slice(0, indexElement),
-          { ...oldElement, done: !oldElement.done }, // Создаю новый элемент на основе старого
-          ...state.todos.slice(indexElement + 1),
-        ],
-      };
+      return { ...action.payload.newTodo };
+    case "importantTodo":
+      return { ...action.payload.newTodo };
     default:
       return state;
   }

@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { ITodoItemProps } from "../interface/ITodoItemProps";
 import { useTodos } from "../../../../hooks/useTodos";
 import "./Item.css";
+import { IItemProps } from "./interface/IItemProps";
 
-const Item: FC<ITodoItemProps> = ({ todo }) => {
+const Item: FC<IItemProps> = ({ todo, important }) => {
   const { doneTodo, todos } = useTodos();
 
   const done = () => {
@@ -13,12 +13,13 @@ const Item: FC<ITodoItemProps> = ({ todo }) => {
   };
 
   const toggleDone = (id: number) => {
-    console.log(id);
     doneTodo(id);
   };
   return (
     <span
-      className={`todo-list-item ${done() ? "done" : null}`}
+      className={`todo-list-item ${done() ? "done" : null} ${
+        important() ? "important" : null
+      }`}
       onClick={() => toggleDone(todo.id)}
     >
       {todo.label}

@@ -5,4 +5,5 @@ export interface TContextProps {
   addTodo: (item: object) => void;
   deleteTodo: (id: number) => void;
   doneTodo: (id: number) => void;
+  importantTodo: (id: number) => void;
 }

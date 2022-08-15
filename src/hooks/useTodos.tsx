@@ -7,6 +7,7 @@ export const useTodos = () => {
     addTodo,
     deleteTodo,
     doneTodo,
+    importantTodo,
   } = useContext(TodoContext);
-  return { addTodo, todos, deleteTodo, doneTodo };
+  return { addTodo, todos, deleteTodo, doneTodo, importantTodo };
 };

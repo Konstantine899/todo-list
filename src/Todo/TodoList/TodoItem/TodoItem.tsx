@@ -1,16 +1,29 @@
 import React, { FC } from "react";
-import ButtonToggleDone from "./Buttons/ButtonToggleDone";
-import ButtonDelete from "./Buttons/ButtonDelete";
-import { ITodoItemProps } from "./interface/ITodoItemProps";
+import ButtonImportant from "./Buttons/ButtonImportant/ButtonImportant";
+import ButtonDelete from "./Buttons/ButtonDelete/ButtonDelete";
 import Item from "./Item/Item";
 import "./TodoItem.css";
+import { useTodos } from "../../../hooks/useTodos";
+import { ITodoItemProps } from "./interface/ITodoItemProps";
 
 const TodoItem: FC<ITodoItemProps> = ({ todo }) => {
+  const { todos, importantTodo } = useTodos();
+
+  const important = (): boolean => {
+    const indexElement = todos.findIndex((element) => element.id === todo.id);
+    const element = todos[indexElement];
+    return element.important;
+  };
+
+  const importantItem = (id: number): void => {
+    importantTodo(id);
+  };
+
   return (
     <span className="list-group-item">
-      <Item todo={todo} />
+      <Item todo={todo} important={important} />
       <div>
-        <ButtonToggleDone />
+        <ButtonImportant todo={todo} importantItem={importantItem} />
         <ButtonDelete todo={todo} />
       </div>
     </span>
