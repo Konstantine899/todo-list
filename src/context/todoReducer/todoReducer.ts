@@ -16,6 +16,19 @@ export const todoReducer = (
           ...state.todos.slice(action.payload.id + 1),
         ],
       };
+    case "doneTodo":
+      const indexElement = state.todos.findIndex(
+        (element) => element.id === action.payload.id
+      );
+      const oldElement = state.todos[indexElement]; //Для лучшей читабельности достаю старый элемент
+      return {
+        ...state,
+        todos: [
+          ...state.todos.slice(0, indexElement),
+          { ...oldElement, done: !oldElement.done }, // Создаю новый элемент на основе старого
+          ...state.todos.slice(indexElement + 1),
+        ],
+      };
     default:
       return state;
   }

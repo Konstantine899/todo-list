@@ -10,7 +10,7 @@ const ItemAddForm: FC = () => {
   const [labelState, setLabelState] = useState<string>("");
 
   const createTodoItem: ITodo = {
-    id: Math.random(),
+    id: Math.floor(Math.random() * 1000) + 1,
     label: labelState.toLowerCase(),
     important: false,
     done: false,
