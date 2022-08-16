@@ -4,11 +4,11 @@ import TodoItem from "./TodoItem/TodoItem";
 import { useTodos } from "../../hooks/useTodos";
 
 const TodoList: FC = () => {
-  const { todos } = useTodos();
+  const { visibleElements } = useTodos();
 
   return (
     <ul>
-      {todos.map((todo) => {
+      {visibleElements.map((todo) => {
         return <TodoItem key={todo.id} todo={todo} />;
       })}
     </ul>

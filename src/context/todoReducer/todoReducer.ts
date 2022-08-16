@@ -20,6 +20,8 @@ export const todoReducer = (
       return { ...action.payload.newTodo };
     case "importantTodo":
       return { ...action.payload.newTodo };
+    case "searchTodo":
+      return { ...state, search: action.payload.search };
     default:
       return state;
   }

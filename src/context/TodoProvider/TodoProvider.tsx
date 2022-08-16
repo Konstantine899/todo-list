@@ -17,12 +17,12 @@ export const TodoProvider = ({ children }: IProps) => {
     dispatch({ type: "deleteTodo", payload: { id } });
   };
 
-  const doneTodo = (id: number) => {
+  const doneTodo = (id: number): void => {
     const newTodo = toggleProperty(id, todoState, "done");
     dispatch({ type: "doneTodo", payload: { newTodo } });
   };
 
-  const importantTodo = (id: number) => {
+  const importantTodo = (id: number): void => {
     const newTodo = toggleProperty(id, todoState, "important");
     dispatch({ type: "importantTodo", payload: { newTodo } });
   };
@@ -32,8 +32,7 @@ export const TodoProvider = ({ children }: IProps) => {
     id: number,
     todoState: IInitialState,
     propName: string
-  ) {
-    console.log("propName", propName);
+  ): IInitialState {
     const indexElement = todoState.todos.findIndex(
       (element) => element.id === id
     );
@@ -52,9 +51,34 @@ export const TodoProvider = ({ children }: IProps) => {
     };
   }
 
+  //Отправка введенного значения пользователя в состояние
+  const searchInputValueFromUser = (searchElement: string): void => {
+    dispatch({ type: "searchTodo", payload: { search: searchElement } });
+  };
+
+  //Фильтрация искомого значения
+  const search = (todos: ITodo[], searchElement: string): ITodo[] => {
+    return todos.filter((element) => {
+      if (element.label.length === 0) return element;
+      return (
+        element.label.toLowerCase().indexOf(searchElement.toLowerCase()) > -1
+      );
+    });
+  };
+
+  const visibleElements = search(todoState.todos, todoState.search);
+
   return (
     <TodoContext.Provider
-      value={{ todoState, addTodo, deleteTodo, doneTodo, importantTodo }}
+      value={{
+        todoState,
+        addTodo,
+        deleteTodo,
+        doneTodo,
+        importantTodo,
+        searchInputValueFromUser,
+        visibleElements,
+      }}
     >
       {children}
     </TodoContext.Provider>

@@ -8,6 +8,16 @@ export const useTodos = () => {
     deleteTodo,
     doneTodo,
     importantTodo,
+    searchInputValueFromUser,
+    visibleElements,
   } = useContext(TodoContext);
-  return { addTodo, todos, deleteTodo, doneTodo, importantTodo };
+  return {
+    addTodo,
+    todos,
+    deleteTodo,
+    doneTodo,
+    importantTodo,
+    searchInputValueFromUser,
+    visibleElements,
+  };
 };
