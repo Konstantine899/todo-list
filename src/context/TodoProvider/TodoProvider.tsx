@@ -66,7 +66,27 @@ export const TodoProvider = ({ children }: IProps) => {
     });
   };
 
-  const visibleElements = search(todoState.todos, todoState.search);
+  const onFilter = (name: string) => {
+    dispatch({ type: "filterTodo", payload: { name } });
+  };
+
+  const filterStatusElement = (state: ITodo[], name: string) => {
+    switch (name) {
+      case "all":
+        return state;
+      case "active":
+        return state.filter((element) => !element.done);
+      case "done":
+        return state.filter((element) => element.done);
+      default:
+        return state;
+    }
+  };
+
+  const visibleElements = filterStatusElement(
+    search(todoState.todos, todoState.search),
+    todoState.filter
+  );
 
   return (
     <TodoContext.Provider
@@ -78,6 +98,7 @@ export const TodoProvider = ({ children }: IProps) => {
         importantTodo,
         searchInputValueFromUser,
         visibleElements,
+        onFilter,
       }}
     >
       {children}

@@ -22,6 +22,8 @@ export const todoReducer = (
       return { ...action.payload.newTodo };
     case "searchTodo":
       return { ...state, search: action.payload.search };
+    case "filterTodo":
+      return { ...state, filter: action.payload.name };
     default:
       return state;
   }

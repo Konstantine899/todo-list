@@ -6,4 +6,5 @@ export type TAction =
   | { type: "deleteTodo"; payload: { id: number } }
   | { type: "doneTodo"; payload: { newTodo: IInitialState } }
   | { type: "importantTodo"; payload: { newTodo: IInitialState } }
-  | { type: "searchTodo"; payload: { search: string } };
+  | { type: "searchTodo"; payload: { search: string } }
+  | { type: "filterTodo"; payload: { name: string } };

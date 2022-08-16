@@ -9,4 +9,5 @@ export interface TContextProps {
   importantTodo: (id: number) => void;
   searchInputValueFromUser: (searchElement: string) => void;
   visibleElements: ITodo[];
+  onFilter: (name: string) => void;
 }
