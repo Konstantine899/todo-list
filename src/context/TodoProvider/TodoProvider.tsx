@@ -1,13 +1,13 @@
 import { TodoContext } from "../TodoContext/TodoContext";
-import { IProps } from "./interface/IProps";
+import { ITodoProviderProps } from "./interface/ITodoProviderProps";
 import { useReducer } from "react";
 import { todoReducer } from "../todoReducer/todoReducer";
-import { initialState } from "../initialState/initialState";
-import { ITodo } from "../initialState/interfaces/ITodo";
-import { IInitialState } from "../initialState/interfaces/IInitialState";
+import { State } from "../State/State";
+import { ITodo } from "../State/interfaces/ITodo";
+import { IState } from "../State/interfaces/IState";
 
-export const TodoProvider = ({ children }: IProps) => {
-  const [todoState, dispatch] = useReducer(todoReducer, initialState);
+export const TodoProvider = ({ children }: ITodoProviderProps) => {
+  const [todoState, dispatch] = useReducer(todoReducer, State);
 
   const addTodo = (item: object): void => {
     dispatch({ type: "addTodo", payload: { ...item } as ITodo });
@@ -30,9 +30,9 @@ export const TodoProvider = ({ children }: IProps) => {
   //Переиспользую функционал для importantTodo и doneTodo
   function toggleProperty(
     id: number,
-    todoState: IInitialState,
+    todoState: IState,
     propName: string
-  ): IInitialState {
+  ): IState {
     const indexElement = todoState.todos.findIndex(
       (element) => element.id === id
     );

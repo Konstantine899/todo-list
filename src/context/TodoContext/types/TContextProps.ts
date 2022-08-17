@@ -1,8 +1,8 @@
-import { IInitialState } from "../../initialState/interfaces/IInitialState";
-import { ITodo } from "../../initialState/interfaces/ITodo";
+import { IState } from "../../State/interfaces/IState";
+import { ITodo } from "../../State/interfaces/ITodo";
 
 export interface TContextProps {
-  todoState: IInitialState;
+  todoState: IState;
   addTodo: (item: object) => void;
   deleteTodo: (id: number) => void;
   doneTodo: (id: number) => void;

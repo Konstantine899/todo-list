@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { IInputForAddItemProps } from "./interface/IInputForAddItemProps";
+import { IInput } from "./interface/IInput";
 
-const InputForAddItem: FC<IInputForAddItemProps> = ({ label, changeInput }) => {
+const Input: FC<IInput> = ({ label, changeInput }) => {
   return (
     <input
       type="text"
@@ -13,4 +13,4 @@ const InputForAddItem: FC<IInputForAddItemProps> = ({ label, changeInput }) => {
   );
 };
 
-export default InputForAddItem;
+export default Input;

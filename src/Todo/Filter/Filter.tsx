@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import "./ItemStatusFilter.css";
+import "./Filter.css";
 import Button from "./Button/Button";
 
-const ItemStatusFilter: FC = () => {
+const Filter: FC = () => {
   const buttons = [
     { name: "all", label: "Все" },
     { name: "active", label: "Активные" },
@@ -18,4 +18,4 @@ const ItemStatusFilter: FC = () => {
   );
 };
 
-export default ItemStatusFilter;
+export default Filter;

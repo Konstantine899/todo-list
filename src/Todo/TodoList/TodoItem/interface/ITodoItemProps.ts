@@ -1,4 +1,4 @@
-import { ITodo } from "../../../../context/initialState/interfaces/ITodo";
+import { ITodo } from "../../../../context/State/interfaces/ITodo";
 
 export interface ITodoItemProps {
   todo: ITodo;

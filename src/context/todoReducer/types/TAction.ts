@@ -1,10 +1,10 @@
-import { ITodo } from "../../initialState/interfaces/ITodo";
-import { IInitialState } from "../../initialState/interfaces/IInitialState";
+import { ITodo } from "../../State/interfaces/ITodo";
+import { IState } from "../../State/interfaces/IState";
 
 export type TAction =
   | { type: "addTodo"; payload: ITodo }
   | { type: "deleteTodo"; payload: { id: number } }
-  | { type: "doneTodo"; payload: { newTodo: IInitialState } }
-  | { type: "importantTodo"; payload: { newTodo: IInitialState } }
+  | { type: "doneTodo"; payload: { newTodo: IState } }
+  | { type: "importantTodo"; payload: { newTodo: IState } }
   | { type: "searchTodo"; payload: { search: string } }
   | { type: "filterTodo"; payload: { name: string } };

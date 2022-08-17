@@ -1,11 +1,11 @@
 import React, { FC, FormEvent, useState } from "react";
-import { ITodo } from "../../context/initialState/interfaces/ITodo";
-import InputForAddItem from "./InputForAddItem/InputForAddItem";
-import ButtonSubmit from "./ButtonSubmit/ButtonSubmit";
+import { ITodo } from "../../context/State/interfaces/ITodo";
+import Input from "./Input/Input";
+import Button from "./Button/Button";
 import { useTodos } from "../../hooks/useTodos";
-import "./ItemAddForm.css";
+import "./AddForm.css";
 
-const ItemAddForm: FC = () => {
+const AddForm: FC = () => {
   const { addTodo } = useTodos();
   const [labelState, setLabelState] = useState<string>("");
 
@@ -29,10 +29,10 @@ const ItemAddForm: FC = () => {
 
   return (
     <form className="item-add-form d-flex">
-      <InputForAddItem changeInput={changeInput} label={labelState} />
-      <ButtonSubmit Submit={handleFormSubmit} />
+      <Input changeInput={changeInput} label={labelState} />
+      <Button Submit={handleFormSubmit} />
     </form>
   );
 };
 
-export default ItemAddForm;
+export default AddForm;

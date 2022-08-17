@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react";
-import "./SearchPanel.css";
+import "./Search.css";
 import { useTodos } from "../../hooks/useTodos";
 
-const SearchPanel: FC = () => {
+const Search: FC = () => {
   const [searchElement, setSearchElement] = useState<string>("");
 
   const { searchInputValueFromUser } = useTodos();
@@ -24,4 +24,4 @@ const SearchPanel: FC = () => {
   );
 };
 
-export default SearchPanel;
+export default Search;

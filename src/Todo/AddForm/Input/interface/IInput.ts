@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface IInputForAddItemProps {
+export interface IInput {
   label: string;
   changeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

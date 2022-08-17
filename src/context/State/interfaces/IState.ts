@@ -1,6 +1,6 @@
 import { ITodo } from "./ITodo";
 
-export interface IInitialState {
+export interface IState {
   todos: ITodo[];
   search: string;
   filter: string;

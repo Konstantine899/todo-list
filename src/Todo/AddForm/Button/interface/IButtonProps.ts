@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
 
-export interface IButtonSubmitProps {
+export interface IButtonProps {
   Submit: (event: FormEvent<HTMLButtonElement>) => void;
 }

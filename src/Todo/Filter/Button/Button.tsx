@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { IProps } from "./interface/IProps";
+import { IButtonProps } from "./interface/IButtonProps";
 import { useTodos } from "../../../hooks/useTodos";
 
-const Button: FC<IProps> = ({ name, label }) => {
+const Button: FC<IButtonProps> = ({ name, label }) => {
   const { filter, onFilter } = useTodos();
 
   const isActive = filter === name;

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { IButtonSubmitProps } from "./interface/IButtonSubmitProps";
+import { IButtonProps } from "./interface/IButtonProps";
 
-const ButtonSubmit: FC<IButtonSubmitProps> = ({ Submit }) => {
+const Button: FC<IButtonProps> = ({ Submit }) => {
   return (
     <button type="submit" className="btn btn-online-secondary" onClick={Submit}>
       Добавить
@@ -9,4 +9,4 @@ const ButtonSubmit: FC<IButtonSubmitProps> = ({ Submit }) => {
   );
 };
 
-export default ButtonSubmit;
+export default Button;

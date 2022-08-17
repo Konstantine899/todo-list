@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import "./AppHeader.css";
+import "./Header.css";
 import { useTodos } from "../../hooks/useTodos";
 
-const AppHeader: FC = () => {
+const Header: FC = () => {
   const { doneElements, activeElements } = useTodos();
   return (
     <div className="app-header">
@@ -11,4 +11,4 @@ const AppHeader: FC = () => {
   );
 };
 
-export default AppHeader;
+export default Header;

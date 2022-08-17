@@ -1,10 +1,7 @@
-import { IInitialState } from "../initialState/interfaces/IInitialState";
+import { IState } from "../State/interfaces/IState";
 import { TAction } from "./types/TAction";
 
-export const todoReducer = (
-  state: IInitialState,
-  action: TAction
-): IInitialState => {
+export const todoReducer = (state: IState, action: TAction): IState => {
   switch (action.type) {
     case "addTodo":
       return { ...state, todos: [...state.todos, action.payload] };
