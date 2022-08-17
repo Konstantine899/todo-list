@@ -88,6 +88,12 @@ export const TodoProvider = ({ children }: IProps) => {
     todoState.filter
   );
 
+  //Подсчет количества выполненных элементов
+  const doneElements = todoState.todos.filter(
+    (element) => element.done === true
+  ).length;
+  //Подсчет количества активных элементов
+  const activeElements = todoState.todos.length - doneElements;
   return (
     <TodoContext.Provider
       value={{
@@ -99,6 +105,8 @@ export const TodoProvider = ({ children }: IProps) => {
         searchInputValueFromUser,
         visibleElements,
         onFilter,
+        doneElements,
+        activeElements,
       }}
     >
       {children}

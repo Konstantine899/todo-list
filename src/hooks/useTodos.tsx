@@ -11,6 +11,8 @@ export const useTodos = () => {
     searchInputValueFromUser,
     visibleElements,
     onFilter,
+    doneElements,
+    activeElements,
   } = useContext(TodoContext);
   return {
     addTodo,
@@ -22,5 +24,7 @@ export const useTodos = () => {
     searchInputValueFromUser,
     visibleElements,
     onFilter,
+    doneElements,
+    activeElements,
   };
 };

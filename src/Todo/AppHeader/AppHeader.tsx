@@ -1,11 +1,12 @@
 import React, { FC } from "react";
 import "./AppHeader.css";
+import { useTodos } from "../../hooks/useTodos";
 
 const AppHeader: FC = () => {
+  const { doneElements, activeElements } = useTodos();
   return (
     <div className="app-header">
-      <h1>Список дел</h1>
-      <h2>1 еще сделать, 2 сделано</h2>
+      <h2>{`${activeElements} еще активно, ${doneElements} сделано`}</h2>
     </div>
   );
 };

@@ -10,4 +10,6 @@ export interface TContextProps {
   searchInputValueFromUser: (searchElement: string) => void;
   visibleElements: ITodo[];
   onFilter: (name: string) => void;
+  doneElements: number;
+  activeElements: number;
 }
