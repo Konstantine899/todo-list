@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/konstantine899.github.io/todo-list/static/css/main.50713d8e.css",
+    "main.js": "/konstantine899.github.io/todo-list/static/js/main.111408a4.js",
+    "index.html": "/konstantine899.github.io/todo-list/index.html",
+    "main.50713d8e.css.map": "/konstantine899.github.io/todo-list/static/css/main.50713d8e.css.map",
+    "main.111408a4.js.map": "/konstantine899.github.io/todo-list/static/js/main.111408a4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50713d8e.css",
+    "static/js/main.111408a4.js"
+  ]
+}
