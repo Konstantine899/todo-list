@@ -5,7 +5,9 @@ import { Todo } from "../enum/Todo";
 export const todoReducer = (state: IState, action: TAction): IState => {
   switch (action.type) {
     case Todo.AddTodo:
-      return { ...state, todos: [...state.todos, action.payload] };
+      const addElement = { ...state, todos: [...state.todos, action.payload] };
+      localStorage.setItem("addElement", JSON.stringify(addElement));
+      return addElement;
     case Todo.DeleteTodo:
       return {
         ...state,

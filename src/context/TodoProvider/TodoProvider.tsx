@@ -1,6 +1,6 @@
 import { TodoContext } from "../TodoContext/TodoContext";
 import { ITodoProviderProps } from "./interface/ITodoProviderProps";
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { todoReducer } from "../todoReducer/todoReducer";
 import { State } from "../State/State";
 import { ITodo } from "../State/interfaces/ITodo";
@@ -9,8 +9,16 @@ import { Todo } from "../enum/Todo";
 import { ToggleProperty } from "../enum/ToggleProperty";
 import { StatusFilter } from "../enum/StatusFilter";
 
+const initStorage = () => {
+  return JSON.parse(localStorage.getItem("todoState") || "{}");
+};
+
 export const TodoProvider = ({ children }: ITodoProviderProps) => {
-  const [todoState, dispatch] = useReducer(todoReducer, State);
+  const [todoState, dispatch] = useReducer(todoReducer, State, initStorage);
+
+  useEffect(() => {
+    localStorage.setItem("todoState", JSON.stringify(todoState));
+  }, [todoState]);
 
   const addTodo = (item: object): void => {
     dispatch({ type: Todo.AddTodo, payload: { ...item } as ITodo });
@@ -99,7 +107,7 @@ export const TodoProvider = ({ children }: ITodoProviderProps) => {
 
   //Подсчет количества выполненных элементов
   const doneElements = todoState.todos.filter(
-    (element) => element.done === true
+    (element) => element.done // или element.done === true
   ).length;
   //Подсчет количества активных элементов
   const activeElements = todoState.todos.length - doneElements;
