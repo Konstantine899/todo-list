@@ -1,12 +1,13 @@
 import React, { FC } from "react";
 import "./Filter.css";
 import Button from "./Button/Button";
+import { StatusFilter } from "../../context/enum/StatusFilter";
 
 const Filter: FC = () => {
   const buttons = [
-    { name: "all", label: "Все" },
-    { name: "active", label: "Активные" },
-    { name: "done", label: "Выполненные" },
+    { name: StatusFilter.All, label: "Все" },
+    { name: StatusFilter.Active, label: "Активные" },
+    { name: StatusFilter.Done, label: "Выполненные" },
   ];
 
   return (

@@ -6,7 +6,7 @@ const Input: FC<IInput> = ({ label, changeInput }) => {
     <input
       type="text"
       className="form-control"
-      placeholder="Что-то нужно добавить"
+      placeholder="Добавить элемент"
       onChange={changeInput}
       value={label}
     />

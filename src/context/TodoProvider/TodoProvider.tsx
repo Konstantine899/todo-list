@@ -5,26 +5,29 @@ import { todoReducer } from "../todoReducer/todoReducer";
 import { State } from "../State/State";
 import { ITodo } from "../State/interfaces/ITodo";
 import { IState } from "../State/interfaces/IState";
+import { Todo } from "../enum/Todo";
+import { ToggleProperty } from "../enum/ToggleProperty";
+import { StatusFilter } from "../enum/StatusFilter";
 
 export const TodoProvider = ({ children }: ITodoProviderProps) => {
   const [todoState, dispatch] = useReducer(todoReducer, State);
 
   const addTodo = (item: object): void => {
-    dispatch({ type: "addTodo", payload: { ...item } as ITodo });
+    dispatch({ type: Todo.AddTodo, payload: { ...item } as ITodo });
   };
 
   const deleteTodo = (id: number) => {
-    dispatch({ type: "deleteTodo", payload: { id } });
+    dispatch({ type: Todo.DeleteTodo, payload: { id } });
   };
 
   const doneTodo = (id: number): void => {
-    const newTodo = toggleProperty(id, todoState, "done");
-    dispatch({ type: "doneTodo", payload: { newTodo } });
+    const newTodo = toggleProperty(id, todoState, ToggleProperty.Done);
+    dispatch({ type: Todo.DoneTodo, payload: { newTodo } });
   };
 
   const importantTodo = (id: number): void => {
-    const newTodo = toggleProperty(id, todoState, "important");
-    dispatch({ type: "importantTodo", payload: { newTodo } });
+    const newTodo = toggleProperty(id, todoState, ToggleProperty.Important);
+    dispatch({ type: Todo.ImportantTodo, payload: { newTodo } });
   };
 
   //Переиспользую функционал для importantTodo и doneTodo
@@ -44,7 +47,13 @@ export const TodoProvider = ({ children }: ITodoProviderProps) => {
         {
           ...oldElement,
           [propName]:
-            !oldElement[`${propName === "important" ? "important" : "done"}`],
+            !oldElement[
+              `${
+                propName === ToggleProperty.Important
+                  ? ToggleProperty.Important
+                  : ToggleProperty.Done
+              }`
+            ],
         }, // Создаю новый элемент на основе старого
         ...todoState.todos.slice(indexElement + 1),
       ],
@@ -53,7 +62,7 @@ export const TodoProvider = ({ children }: ITodoProviderProps) => {
 
   //Отправка введенного значения пользователя в состояние
   const searchInputValueFromUser = (searchElement: string): void => {
-    dispatch({ type: "searchTodo", payload: { search: searchElement } });
+    dispatch({ type: Todo.SearchTodo, payload: { search: searchElement } });
   };
 
   //Фильтрация искомого значения
@@ -67,16 +76,16 @@ export const TodoProvider = ({ children }: ITodoProviderProps) => {
   };
 
   const onFilter = (name: string) => {
-    dispatch({ type: "filterTodo", payload: { name } });
+    dispatch({ type: Todo.FilterTodo, payload: { name } });
   };
 
   const filterStatusElement = (state: ITodo[], name: string) => {
     switch (name) {
-      case "all":
+      case StatusFilter.All:
         return state;
-      case "active":
+      case StatusFilter.Active:
         return state.filter((element) => !element.done);
-      case "done":
+      case StatusFilter.Done:
         return state.filter((element) => element.done);
       default:
         return state;

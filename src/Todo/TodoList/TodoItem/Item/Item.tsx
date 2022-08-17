@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { useTodos } from "../../../../hooks/useTodos";
 import "./Item.css";
 import { IItemProps } from "./interface/IItemProps";
+import { ToggleProperty } from "../../../../context/enum/ToggleProperty";
 
 const Item: FC<IItemProps> = ({ todo, important }) => {
   const { doneTodo, todos } = useTodos();
@@ -17,8 +18,8 @@ const Item: FC<IItemProps> = ({ todo, important }) => {
   };
   return (
     <span
-      className={`todo-list-item ${done() ? "done" : null} ${
-        important() ? "important" : null
+      className={`todo-list-item ${done() ? ToggleProperty.Done : null} ${
+        important() ? ToggleProperty.Important : null
       }`}
       onClick={() => toggleDone(todo.id)}
     >

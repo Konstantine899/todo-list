@@ -17,7 +17,7 @@ const Search: FC = () => {
     <input
       type="text"
       className="form-control search-input"
-      placeholder="Введите для поиска"
+      placeholder="Поиск"
       value={searchElement}
       onChange={onSearch}
     />

@@ -1,7 +1,8 @@
 import { IState } from "./interfaces/IState";
+import { StatusFilter } from "../enum/StatusFilter";
 
 export const State: IState = {
   todos: [],
   search: "",
-  filter: "all", // active | all | done
+  filter: StatusFilter.All, // active | all | done
 };
