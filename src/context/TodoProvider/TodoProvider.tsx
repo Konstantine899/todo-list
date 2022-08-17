@@ -10,6 +10,12 @@ import { ToggleProperty } from "../enum/ToggleProperty";
 import { StatusFilter } from "../enum/StatusFilter";
 
 const initStorage = () => {
+  if (
+    typeof localStorage.getItem("todoState") === "undefined" ||
+    localStorage.getItem("todoState") === null
+  ) {
+    return State;
+  }
   return JSON.parse(localStorage.getItem("todoState") || "{}");
 };
 
